@@ -12,3 +12,7 @@
 2. or clone github repo and then run setup.sh
 3. run the main code by "python script.py"
 
+## Demo
+
+https://github.com/manhoosbilli1/pid-led-ldr-with-RPI/assets/36271208/330b829b-99b7-49cf-914b-55cfc9956573
+
