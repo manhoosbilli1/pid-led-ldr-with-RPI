@@ -8,9 +8,12 @@ sudo rm -r pid-led-ldr-with-RPI
 git clone https://github.com/manhoosbilli1/pid-led-ldr-with-RPI.git
 sudo rm -r project
 cp -r pid-led-ldr-with-RPI project
+sudo rm -r pid-led-ldr-with-RPI
 cd project
 pip install -r req.txt
-sudo rm -r pid-led-ldr-with-RPI
-echo -e "\n\n\n\n\n You are all done. now just type switch to 'project' directory by cd project and type 'python script.py' and you will see output" 
-echo "Enjoy! good bye. "
+echo -e "\n\n\n\n\nYou are all done. now just type switch to 'project' directory by 'cd project' and type 'python script.py' and you will see output" 
+echo -e "\n \nStarting the script right now..."
+echo -e "Enjoy! good bye. "
+
+python script.py
 
