@@ -3,16 +3,24 @@
 import RPi.GPIO as GPIO
 import time
 from simple_pid import PID
-pid = PID(1,0.1, 0.05, setpoint = 90)
+
+GPIO.cleanup() 
+
+
+pid = PID(.1,0.5, 0.05, setpoint = 90)
 pid.sample_time = 0.1
+
+
 pid.output_limits = (0,100)
 
 led_pin = 13
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(led_pin, GPIO.OUT)
-led = GPIO.PWM(led_pin, 50)
-led.start(0)
+led = GPIO.PWM(led_pin, 500)
+led.start(100)
+time.sleep(2)
+
 
 #define the pin that goes to the circuit
 pin_to_circuit = 7
@@ -37,12 +45,13 @@ def rc_time (pin_to_circuit):
 
     return count
 
+pid.set_auto_mode(True, last_output=80)
 #Catch when script is interupted, cleanup correctly
 try:
     # Main loop
     while True:
         value = rc_time(pin_to_circuit)
-        led_brightness = map_value(value,0,65536,100,0)
+        led_brightness = map_value(value,100 , 60000, 100, 0)
         output = pid(led_brightness)
         print(f"pid output = {output}, \t led_brightness = {led_brightness}\n")
         led.ChangeDutyCycle(output)
